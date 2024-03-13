@@ -11,7 +11,7 @@ app.get("/", (_, res: Response) => {
 });
 
 function echo(req: Request, res: Response) {
-  res.send(req);
+  res.send(req.originalUrl);
 }
 
 app.get("/bathrooms", echo);

@@ -18,9 +18,9 @@ app.get("/bathrooms", echo);
 app.get("/bathrooms/:bathroomId", echo);
 app.post("/bathrooms", echo);
 app.get("/bathrooms/:bathroomId/reviews", echo);
-app.post("/bathroom/:bathroomId/reviews", echo);
+app.post("/bathrooms/:bathroomId/reviews", echo);
 app.get("/bathrooms/:bathroomId/tags", echo);
-app.post("/bathroom/:bathroomId/tags", echo);
+app.post("/bathrooms/:bathroomId/tags", echo);
 
 app.listen(port, () => {
   console.log(`bathroom-finder-backend started successfully on port ${port}`);

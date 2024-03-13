@@ -23,5 +23,5 @@ app.get("/bathrooms/:bathroomId/tags", echo);
 app.post("/bathroom/:bathroomId/tags", echo);
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`bathroom-finder-backend started successfully on port ${port}`);
 });

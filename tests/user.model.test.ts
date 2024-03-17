@@ -19,7 +19,7 @@ describe('User Model Test', () => {
     const userData = { 
 		email: 'test@test.com', 
 		password: '123456',
-		pfpURL: 'https://example.com/profilepic.jpg', // Provide a profile picture URL
+		pfpURL: 'https://example.com/profilepic.jpg', 
     	DateJoined: new Date(), 
 		DisplayName: 'Test User' };
     const validUser = new User(userData);

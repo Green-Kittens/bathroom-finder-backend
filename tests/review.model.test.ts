@@ -21,8 +21,8 @@ describe('Review Model Test', () => {
       Likes: 50,
       Dislikes: 10,
       PictureURL: "https://example.com/pic.jpg",
-      FacilityID: new mongoose.Types.ObjectId(), // Assuming this would be a valid ObjectId in a real scenario
-      UserId: new mongoose.Types.ObjectId(), // Assuming this would be a valid ObjectId in a real scenario
+      FacilityID: new mongoose.Types.ObjectId(), 
+      UserId: new mongoose.Types.ObjectId(), 
       Date: new Date(),
       Description: "Great place!"
     };

@@ -10,7 +10,7 @@
     "build": "tsc",
     "format-check": "prettier . --check",
     "lint-check": "eslint .",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon"
   },
   "author": "",
   "license": "ISC",

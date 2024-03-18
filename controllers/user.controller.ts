@@ -1,4 +1,4 @@
-import User from '../models/user.model';
+import User from '../models/user.model.js';
 import { Request, Response } from 'express';
 
 // Create a new user

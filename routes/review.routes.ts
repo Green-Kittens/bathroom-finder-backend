@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import { createReview, getAllReviews, getReviewById, updateReview, deleteReview } from '../controllers/review.controller';
+import { createReview, getAllReviews, getReviewById, updateReview, deleteReview } from '../controllers/review.controller.js';
 
 // Route to create a new review
 router.post('/reviews', createReview);

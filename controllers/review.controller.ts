@@ -1,4 +1,4 @@
-import Review from '../models/review.model';
+import Review from '../models/review.model.js';
 import { Request, Response } from 'express';
 
 // Create a new review

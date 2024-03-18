@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import { createFacility, getAllFacilities, getFacilityById, updateFacility, deleteFacility } from '../controllers/facility.controller';
+import { createFacility, getAllFacilities, getFacilityById, updateFacility, deleteFacility } from '../controllers/facility.controller.js';
 
 // Route to create a new facility
 router.post('/facilities', createFacility);

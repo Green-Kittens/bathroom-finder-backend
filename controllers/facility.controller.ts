@@ -1,4 +1,4 @@
-import Facility from '../models/facility.model';
+import Facility from '../models/facility.model.js';
 import { Request, Response } from 'express';
 
 // Create a new facility

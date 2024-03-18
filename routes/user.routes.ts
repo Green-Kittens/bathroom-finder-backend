@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import { createUser, getAllUsers, getUserById, updateUser, deleteUser } from '../controllers/user.controller';
+import { createUser, getAllUsers, getUserById, updateUser, deleteUser } from '../controllers/user.controller.js';
 
 // Route to create a new user
 router.post('/users', createUser);

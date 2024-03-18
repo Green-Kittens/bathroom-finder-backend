@@ -1,12 +1,11 @@
 // models/facility.model.ts
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document } from "mongoose";
 
 interface IFacility extends Document {
   Name: string;
   Location: {
     coordinates: number[];
     type: string;
-	
   };
   Category: string;
   Tags: string;
@@ -23,19 +22,19 @@ const FacilitySchema: Schema = new Schema({
   Name: { type: String, required: true },
   Location: {
     coordinates: { type: [Number], required: true },
-    type: { type: String, default: 'Point', enum: ['Point'] },
+    type: { type: String, default: "Point", enum: ["Point"] },
   },
   Category: { type: String, required: true },
   Tags: { type: String, required: true },
   Operations: { type: String, required: true },
-  Reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
+  Reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
   Date: { type: Date, required: true },
   PictureURL: { type: String, required: true },
   RatingAVG: { type: Number, required: true },
   Favorites: { type: Number, required: true },
-  Reports: { type: Number, required: true }
+  Reports: { type: Number, required: true },
 });
 
-FacilitySchema.index({ "Location": "2dsphere" });
+FacilitySchema.index({ Location: "2dsphere" });
 
-export default mongoose.model<IFacility>('Facility', FacilitySchema);
+export default mongoose.model<IFacility>("Facility", FacilitySchema);

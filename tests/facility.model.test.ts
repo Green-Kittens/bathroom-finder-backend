@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
-import { MongoMemoryServer } from 'mongodb-memory-server';
-import Facility from '../models/facility.model.js';
+import mongoose from "mongoose";
+import { MongoMemoryServer } from "mongodb-memory-server";
+import Facility from "../models/facility.model.js";
 
-describe('Facility Model Test', () => {
+describe("Facility Model Test", () => {
   let mongoServer: MongoMemoryServer;
 
   beforeAll(async () => {
@@ -15,7 +15,7 @@ describe('Facility Model Test', () => {
     await mongoServer.stop();
   });
 
-  it('create & save facility successfully', async () => {
+  it("create & save facility successfully", async () => {
     const facilityData = {
       Name: "Facility One",
       Location: { type: "Point", coordinates: [-73.97, 40.77] },
@@ -27,7 +27,7 @@ describe('Facility Model Test', () => {
       PictureURL: "https://example.com/facility.jpg",
       RatingAVG: 4.5,
       Favorites: 0,
-      Reports: 0
+      Reports: 0,
     };
     const validFacility = new Facility(facilityData);
     const savedFacility = await validFacility.save();

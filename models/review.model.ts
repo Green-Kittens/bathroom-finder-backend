@@ -1,5 +1,5 @@
 // models/review.model.ts
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document } from "mongoose";
 
 interface IReview extends Document {
   Rating: number;
@@ -17,10 +17,14 @@ const ReviewSchema: Schema = new Schema({
   Likes: { type: Number, required: true },
   Dislikes: { type: Number, required: true },
   PictureURL: { type: String, required: true },
-  FacilityID: { type: mongoose.Schema.Types.ObjectId, ref: 'Facility', required: true },
-  UserId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  FacilityID: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Facility",
+    required: true,
+  },
+  UserId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
   Date: { type: Date, required: true },
-  Description: { type: String, required: true }
+  Description: { type: String, required: true },
 });
 
-export default mongoose.model<IReview>('Review', ReviewSchema);
+export default mongoose.model<IReview>("Review", ReviewSchema);

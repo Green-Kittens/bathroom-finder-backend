@@ -1,5 +1,5 @@
-import Review from '../models/review.model.js';
-import { Request, Response } from 'express';
+import Review from "../models/review.model.js";
+import { Request, Response } from "express";
 
 // Create a new review
 export const createReview = async (req: Request, res: Response) => {
@@ -38,7 +38,10 @@ export const getReviewById = async (req: Request, res: Response) => {
 // Update a review
 export const updateReview = async (req: Request, res: Response) => {
   try {
-    const review = await Review.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+    const review = await Review.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
     if (!review) {
       return res.status(404).send();
     }

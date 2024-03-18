@@ -1,5 +1,5 @@
-import Facility from '../models/facility.model.js';
-import { Request, Response } from 'express';
+import Facility from "../models/facility.model.js";
+import { Request, Response } from "express";
 
 // Create a new facility
 export const createFacility = async (req: Request, res: Response) => {
@@ -38,7 +38,10 @@ export const getFacilityById = async (req: Request, res: Response) => {
 // Update a facility
 export const updateFacility = async (req: Request, res: Response) => {
   try {
-    const facility = await Facility.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+    const facility = await Facility.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
     if (!facility) {
       return res.status(404).send();
     }

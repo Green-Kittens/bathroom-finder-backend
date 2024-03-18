@@ -11,12 +11,13 @@ const port = process.env.PORT || 3000; // Server port
 
 // Database connection
 const databaseUrl = process.env.DATABASE_URL || ""; // Ensure DATABASE_URL is defined
-mongoose.connect(databaseUrl, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-} as ConnectOptions)
-.then(() => console.log('Connected to MongoDB Atlas'))
-.catch(err => console.error('Could not connect to MongoDB Atlas', err));
+mongoose
+  .connect(databaseUrl, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  } as ConnectOptions)
+  .then(() => console.log("Connected to MongoDB Atlas"))
+  .catch((err) => console.error("Could not connect to MongoDB Atlas", err));
 
 // Basic route for home page
 app.get("/", (_, res: Response) => {

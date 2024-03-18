@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
-import { MongoMemoryServer } from 'mongodb-memory-server';
-import User from '../models/user.model.js';
+import mongoose from "mongoose";
+import { MongoMemoryServer } from "mongodb-memory-server";
+import User from "../models/user.model.js";
 
-describe('User Model Test', () => {
+describe("User Model Test", () => {
   let mongoServer: MongoMemoryServer;
 
   beforeAll(async () => {
@@ -15,20 +15,21 @@ describe('User Model Test', () => {
     await mongoServer.stop();
   });
 
-  it('create & save user successfully', async () => {
-    const userData = { 
-		email: 'test@test.com', 
-		password: '123456',
-		pfpURL: 'https://example.com/profilepic.jpg', 
-    	DateJoined: new Date(), 
-		DisplayName: 'Test User' };
+  it("create & save user successfully", async () => {
+    const userData = {
+      email: "test@test.com",
+      password: "123456",
+      pfpURL: "https://example.com/profilepic.jpg",
+      DateJoined: new Date(),
+      DisplayName: "Test User",
+    };
     const validUser = new User(userData);
     const savedUser = await validUser.save();
 
     expect(savedUser._id).toBeDefined();
     expect(savedUser.email).toBe(userData.email);
-	expect(savedUser.pfpURL).toBe(userData.pfpURL);
-  	expect(savedUser.DateJoined).toBeDefined();
+    expect(savedUser.pfpURL).toBe(userData.pfpURL);
+    expect(savedUser.DateJoined).toBeDefined();
   });
 
   // Add more tests here for validation, querying, etc.

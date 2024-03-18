@@ -9,6 +9,7 @@
     "start": "tsc && node dist/index.js",
     "build": "tsc",
     "format-check": "prettier . --check",
+    "format": "prettier . --write",
     "lint-check": "eslint .",
     "dev": "nodemon"
   },

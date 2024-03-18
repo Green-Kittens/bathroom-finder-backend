@@ -1,5 +1,5 @@
-import User from '../models/user.model.js';
-import { Request, Response } from 'express';
+import User from "../models/user.model.js";
+import { Request, Response } from "express";
 
 // Create a new user
 export const createUser = async (req: Request, res: Response) => {
@@ -38,7 +38,10 @@ export const getUserById = async (req: Request, res: Response) => {
 // Update a user
 export const updateUser = async (req: Request, res: Response) => {
   try {
-    const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+    const user = await User.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
     if (!user) {
       return res.status(404).send();
     }

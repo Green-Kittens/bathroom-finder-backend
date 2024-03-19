@@ -21,12 +21,9 @@
     "mongoose": "^8.2.1"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.24.0",
-    "@babel/preset-typescript": "^7.23.3",
     "@types/express": "^4.17.21",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.11.22",
-    "babel-jest": "^29.7.0",
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
     "eslint": "^8.57.0",

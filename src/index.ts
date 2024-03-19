@@ -19,24 +19,14 @@ mongoose
   .then(() => console.log("Connected to MongoDB Atlas"))
   .catch((err) => console.error("Could not connect to MongoDB Atlas", err));
 
-// Basic route for home page
-app.get("/", (_, res: Response) => {
-  res.send("Hello World!");
-});
-
-// Echo function to display request URLs
-function echo(req: Request, res: Response) {
-  res.send(req.originalUrl);
-}
-
 // Additional routes for bathroom finder functionality
-app.get("/bathrooms", echo);
-app.get("/bathrooms/:bathroomId", echo);
-app.post("/bathrooms", echo);
-app.get("/bathrooms/:bathroomId/reviews", echo);
-app.post("/bathrooms/:bathroomId/reviews", echo);
-app.get("/bathrooms/:bathroomId/tags", echo);
-app.post("/bathrooms/:bathroomId/tags", echo);
+app.get("/bathrooms");
+app.get("/bathrooms/:bathroomId");
+app.post("/bathrooms");
+app.get("/bathrooms/:bathroomId/reviews");
+app.post("/bathrooms/:bathroomId/reviews");
+app.get("/bathrooms/:bathroomId/tags");
+app.post("/bathrooms/:bathroomId/tags");
 
 // Starting the server
 app.listen(port, () => {

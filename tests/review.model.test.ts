@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
-import Review from "../models/review.model.js";
+import Review from "../src/models/review.model.js";
 
 describe("Review Model Test", () => {
   let mongoServer: MongoMemoryServer;

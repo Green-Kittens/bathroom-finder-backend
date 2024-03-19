@@ -38,7 +38,7 @@ const FacilitySchema: Schema = new Schema({
 FacilitySchema.index({ Location: "2dsphere" });
 
 export default mongoose.model<IFacility>(
-  "Facility",
+  "facilities",
   FacilitySchema,
-  "Facility",
+  "facilities",
 );

@@ -25,9 +25,9 @@ mongoose
   .catch((err) => console.error("Could not connect to MongoDB Atlas", err));
 
 // Use the routes with their base paths
-app.use("/User", userRoutes);
-app.use("/Review", reviewRoutes);
-app.use("/Facility", facilityRoutes);
+app.use("/users", userRoutes);
+app.use("/reviews", reviewRoutes);
+app.use("/facilities", facilityRoutes);
 // Starting the server
 app.listen(port, () => {
   console.log(`App started successfully on port ${port}`);

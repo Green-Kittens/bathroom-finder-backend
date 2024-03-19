@@ -27,4 +27,4 @@ const ReviewSchema: Schema = new Schema({
   Description: { type: String, required: true },
 });
 
-export default mongoose.model<IReview>("Review", ReviewSchema, "Review");
+export default mongoose.model<IReview>("reviews", ReviewSchema, "reviews");

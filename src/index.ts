@@ -1,27 +1,34 @@
-import express, { Express, Response, Request } from "express";
+import express, { Express } from "express";
+import mongoose, { ConnectOptions } from "mongoose";
 import dotenv from "dotenv";
+import facilityRoutes from "./routes/facility.routes.js";
+import userRoutes from "./routes/user.routes.js";
+import reviewRoutes from "./routes/review.routes.js";
 
+// Initialize configuration from .env file
 dotenv.config();
 
+// Express app setup
 const app: Express = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000; // Server port
 
-app.get("/", (_, res: Response) => {
-  res.send("Hello World!");
-});
+app.use(express.json());
 
-function echo(req: Request, res: Response) {
-  res.send(req.originalUrl);
-}
+// Database connection
+const databaseUrl = process.env.DATABASE_URL || ""; // Ensure DATABASE_URL is defined
+mongoose
+  .connect(databaseUrl, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  } as ConnectOptions)
+  .then(() => console.log("Connected to MongoDB Atlas"))
+  .catch((err) => console.error("Could not connect to MongoDB Atlas", err));
 
-app.get("/bathrooms", echo);
-app.get("/bathrooms/:bathroomId", echo);
-app.post("/bathrooms", echo);
-app.get("/bathrooms/:bathroomId/reviews", echo);
-app.post("/bathrooms/:bathroomId/reviews", echo);
-app.get("/bathrooms/:bathroomId/tags", echo);
-app.post("/bathrooms/:bathroomId/tags", echo);
-
+// Use the routes with their base paths
+app.use("/users", userRoutes);
+app.use("/reviews", reviewRoutes);
+app.use("/facilities", facilityRoutes);
+// Starting the server
 app.listen(port, () => {
-  console.log(`bathroom-finder-backend started successfully on port ${port}`);
+  console.log(`App started successfully on port ${port}`);
 });

@@ -1,10 +1,9 @@
 import express, { Express } from "express";
 import mongoose, { ConnectOptions } from "mongoose";
 import dotenv from "dotenv";
-import facilityRoutes from "./routes/facility.routes.js"; 
+import facilityRoutes from "./routes/facility.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import reviewRoutes from "./routes/review.routes.js";
-
 
 // Initialize configuration from .env file
 dotenv.config();

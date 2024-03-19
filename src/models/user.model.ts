@@ -20,4 +20,4 @@ const UserSchema: Schema = new Schema({
   DisplayName: { type: String, required: true },
 });
 
-export default mongoose.model<IUser>("User", UserSchema);
+export default mongoose.model<IUser>("User", UserSchema, "User");

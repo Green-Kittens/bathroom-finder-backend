@@ -9,18 +9,18 @@ import {
 } from "../controllers/facility.controller.js";
 
 // Retrieve a list of all bathrooms
-router.get("/bathrooms", getAllBathrooms);
+router.get("/", getAllBathrooms);
 
 // Retrieve information on a specific bathroom
-router.get("/bathrooms/:bathroomId", getBathroomById);
+router.get("/:bathroomId", getBathroomById);
 
 // Create a new bathroom
-router.post("/bathrooms", createBathroom);
+router.post("/", createBathroom);
 
 // Retrieve all tags currently applied to the bathroom
-router.get("/bathrooms/:bathroomId/tags", getBathroomTags);
+router.get("/:bathroomId/tags", getBathroomTags);
 
 // Submit a new revision of the list of tags
-router.post("/bathrooms/:bathroomId/tags", updateBathroomTags);
+router.post(":bathroomId/tags", updateBathroomTags);
 
 export default router;

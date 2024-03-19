@@ -19,6 +19,7 @@ interface IFacility extends Document {
 }
 
 const FacilitySchema: Schema = new Schema({
+  
   Name: { type: String, required: true },
   Location: {
     coordinates: { type: [Number], required: true },
@@ -37,4 +38,4 @@ const FacilitySchema: Schema = new Schema({
 
 FacilitySchema.index({ Location: "2dsphere" });
 
-export default mongoose.model<IFacility>("Facility", FacilitySchema);
+export default mongoose.model<IFacility>("Facility", FacilitySchema, "Facility");

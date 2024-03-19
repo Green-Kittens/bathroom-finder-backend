@@ -9,14 +9,14 @@ import {
 } from "../controllers/review.controller.js";
 
 // Route to create a new review
-router.post("/reviews", createReview);
+router.post("/", createReview);
 // Route to get all reviews
-router.get("/reviews", getAllReviews);
+router.get("/", getAllReviews);
 // Route to get a single review by id
-router.get("/reviews/:id", getReviewById);
+router.get("/:id", getReviewById);
 // Route to update a review
-router.put("/reviews/:id", updateReview);
+router.put("/:id", updateReview);
 // Route to delete a review
-router.delete("/reviews/:id", deleteReview);
+router.delete("/:id", deleteReview);
 
 export default router;

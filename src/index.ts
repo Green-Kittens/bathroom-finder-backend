@@ -1,6 +1,10 @@
 import express, { Express } from "express";
 import mongoose, { ConnectOptions } from "mongoose";
 import dotenv from "dotenv";
+import facilityRoutes from "./routes/facility.routes.js"; 
+import userRoutes from "./routes/user.routes.js";
+import reviewRoutes from "./routes/review.routes.js";
+
 
 // Initialize configuration from .env file
 dotenv.config();
@@ -8,6 +12,8 @@ dotenv.config();
 // Express app setup
 const app: Express = express();
 const port = process.env.PORT || 3000; // Server port
+
+app.use(express.json());
 
 // Database connection
 const databaseUrl = process.env.DATABASE_URL || ""; // Ensure DATABASE_URL is defined
@@ -19,15 +25,10 @@ mongoose
   .then(() => console.log("Connected to MongoDB Atlas"))
   .catch((err) => console.error("Could not connect to MongoDB Atlas", err));
 
-// Additional routes for bathroom finder functionality
-app.get("/bathrooms");
-app.get("/bathrooms/:bathroomId");
-app.post("/bathrooms");
-app.get("/bathrooms/:bathroomId/reviews");
-app.post("/bathrooms/:bathroomId/reviews");
-app.get("/bathrooms/:bathroomId/tags");
-app.post("/bathrooms/:bathroomId/tags");
-
+// Use the routes with their base paths
+app.use("/User", userRoutes);
+app.use("/Review", reviewRoutes);
+app.use("/Facility", facilityRoutes);
 // Starting the server
 app.listen(port, () => {
   console.log(`App started successfully on port ${port}`);

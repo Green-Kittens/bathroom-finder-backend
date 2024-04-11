@@ -2,7 +2,6 @@ import mongoose, { Schema, Document } from "mongoose";
 
 interface IUser extends Document {
   email: string;
-  password: string;
   Favorites: mongoose.Schema.Types.ObjectId[];
   Reviews: mongoose.Schema.Types.ObjectId[];
   DateJoined: Date;
@@ -12,7 +11,6 @@ interface IUser extends Document {
 
 const UserSchema: Schema = new Schema({
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
   Favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: "Facility" }],
   Reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
   DateJoined: { type: Date, required: true },

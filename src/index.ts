@@ -1,34 +1,29 @@
-import express, { Express } from "express";
-import mongoose, { ConnectOptions } from "mongoose";
-import dotenv from "dotenv";
-import facilityRoutes from "./routes/facility.routes.js";
-import userRoutes from "./routes/user.routes.js";
-import reviewRoutes from "./routes/review.routes.js";
-
-// Initialize configuration from .env file
-dotenv.config();
+import express from 'express';
+import { config } from './config.js';
+import { connectDatabase } from './database.js';
+import userRoutes from './routes/user.routes.js'; // Adjust path as necessary
+import facilityRoutes from './routes/facility.routes.js'; // Adjust path as necessary
+import reviewRoutes from './routes/review.routes.js'; // Adjust path as necessary
+import cookieParser from 'cookie-parser';
+import workosRoutes from './routes/workos.routes.js'; // Adjust path as necessary
 
 // Express app setup
-const app: Express = express();
-const port = process.env.PORT || 3000; // Server port
+const app = express();
+app.use(express.json());
+app.use(cookieParser());
+connectDatabase();
+
+app.use(cookieParser());
 
 app.use(express.json());
-
-// Database connection
-const databaseUrl = process.env.DATABASE_URL || ""; // Ensure DATABASE_URL is defined
-mongoose
-  .connect(databaseUrl, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  } as ConnectOptions)
-  .then(() => console.log("Connected to MongoDB Atlas"))
-  .catch((err) => console.error("Could not connect to MongoDB Atlas", err));
 
 // Use the routes with their base paths
 app.use("/users", userRoutes);
 app.use("/reviews", reviewRoutes);
 app.use("/facilities", facilityRoutes);
-// Starting the server
-app.listen(port, () => {
-  console.log(`App started successfully on port ${port}`);
+app.use("/workos", workosRoutes);
+
+app.listen(config.port, () => {
+  console.log(`Server running on port ${config.port}`);
 });
+

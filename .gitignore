@@ -1,4 +1,9 @@
 node_modules
 dist
 coverage
-.env.local
+
+# Ignore all .env files in the root directory
+.env*
+.flaskenv*
+!.env.project
+!.env.vault

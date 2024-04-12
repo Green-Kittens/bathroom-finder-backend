@@ -3,6 +3,7 @@ dist
 coverage
 
 # Ignore all .env files in the root directory
+.env
 .env*
 .flaskenv*
 !.env.project

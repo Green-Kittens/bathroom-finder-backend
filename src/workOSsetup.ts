@@ -1,6 +1,6 @@
-import { WorkOS } from '@workos-inc/node';
-import { createRemoteJWKSet } from 'jose';
-import { config } from './config.js';
+import { WorkOS } from "@workos-inc/node";
+import { createRemoteJWKSet } from "jose";
+import { config } from "./config.js";
 
 const workos = new WorkOS(config.workosApiKey);
 

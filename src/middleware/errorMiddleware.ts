@@ -1,6 +1,11 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from "express";
 
-export function handleError(err: Error, req: Request, res: Response, next: NextFunction) {
+export function handleError(
+  err: Error,
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) {
   console.error(err);
-  res.status(500).send('An internal error occurred');
+  res.status(500).send("An internal error occurred");
 }

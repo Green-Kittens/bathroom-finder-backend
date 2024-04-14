@@ -4,10 +4,10 @@ export type RefreshToken = string;
 
 // Example user type, adjust according to your actual user object
 export interface User {
-    id: string;
-    email: string;
-    name: string;
-    // Add other user properties as needed
+  id: string;
+  email: string;
+  name: string;
+  // Add other user properties as needed
 }
 
 // If impersonator has the same structure as a user, you can reuse the User type.

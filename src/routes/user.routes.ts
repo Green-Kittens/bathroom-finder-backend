@@ -1,5 +1,5 @@
 import express from "express";
-import { withAuth } from "../middleware/authMiddleware.js";
+// import { withAuth } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 import {

@@ -1,11 +1,11 @@
 import express from "express";
+
 const router = express.Router();
 import {
   getAllBathrooms,
   getBathroomById,
   createBathroom,
   getBathroomTags,
-  updateBathroomTags,
 } from "../controllers/facility.controller.js";
 
 // Retrieve a list of all bathrooms
@@ -15,12 +15,9 @@ router.get("/", getAllBathrooms);
 router.get("/:bathroomId", getBathroomById);
 
 // Create a new bathroom
-router.post("/", createBathroom);
+router.post("/", createBathroom); //withAuth,
 
 // Retrieve all tags currently applied to the bathroom
 router.get("/:bathroomId/tags", getBathroomTags);
-
-// Submit a new revision of the list of tags
-router.post(":bathroomId/tags", updateBathroomTags);
 
 export default router;

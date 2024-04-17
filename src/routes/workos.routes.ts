@@ -3,7 +3,6 @@ import { workos } from "../workOSsetup.js";
 import { config } from "../config.js";
 import { sealData } from "iron-session";
 
-
 const router = express.Router();
 
 // AuthKit routes

@@ -2,7 +2,7 @@ import express from "express";
 import { workos } from "../workOSsetup.js";
 import { config } from "../config.js";
 import { sealData } from "iron-session";
-// import { withAuth } from "../middleware/authMiddleware.js";
+
 
 const router = express.Router();
 

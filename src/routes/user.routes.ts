@@ -1,5 +1,4 @@
 import express from "express";
-// import { withAuth } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 import {
@@ -10,15 +9,15 @@ import {
 } from "../controllers/user.controller.js";
 
 // Route to create a new user
-router.post("/", createUser);
+router.post("/", createUser); //withAuth,
 
 // Route to get a single user by id
 router.get("/:id", getUserById);
 
 // Route to update a user
-router.put("/:id", updateUser);
+router.put("/:id", updateUser); //withAuth,
 
 // Route to delete a user
-router.delete("/:id", deleteUser);
+router.delete("/:id", deleteUser); //withAuth,
 
 export default router;

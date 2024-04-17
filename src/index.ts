@@ -13,10 +13,6 @@ app.use(express.json());
 app.use(cookieParser());
 connectDatabase();
 
-app.use(cookieParser());
-
-app.use(express.json());
-
 // Use the routes with their base paths
 app.use("/users", userRoutes);
 app.use("/reviews", reviewRoutes);

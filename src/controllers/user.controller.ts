@@ -1,31 +1,30 @@
-import User from "../models/user.model.js";
+// user.controller.ts
 import { Request, Response } from "express";
+import { UserService } from "../services/user.service.js";
 
-// Create a new user
+const userService = new UserService();
+
 export const createUser = async (req: Request, res: Response) => {
   try {
-    const newUser = new User(req.body);
-    await newUser.save();
+    const newUser = await userService.createUser(req.body);
     res.status(201).send(newUser);
   } catch (error) {
     res.status(400).send(error);
   }
 };
 
-// Get all users
 export const getAllUsers = async (req: Request, res: Response) => {
   try {
-    const users = await User.find({});
+    const users = await userService.getAllUsers();
     res.status(200).send(users);
   } catch (error) {
     res.status(500).send(error);
   }
 };
 
-// Get a single user by id
 export const getUserById = async (req: Request, res: Response) => {
   try {
-    const user = await User.findById(req.params.id);
+    const user = await userService.getUserById(req.params.id);
     if (!user) {
       return res.status(404).send();
     }
@@ -35,13 +34,9 @@ export const getUserById = async (req: Request, res: Response) => {
   }
 };
 
-// Update a user
 export const updateUser = async (req: Request, res: Response) => {
   try {
-    const user = await User.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
+    const user = await userService.updateUser(req.params.id, req.body);
     if (!user) {
       return res.status(404).send();
     }
@@ -51,10 +46,9 @@ export const updateUser = async (req: Request, res: Response) => {
   }
 };
 
-// Delete a user
 export const deleteUser = async (req: Request, res: Response) => {
   try {
-    const user = await User.findByIdAndDelete(req.params.id);
+    const user = await userService.deleteUser(req.params.id);
     if (!user) {
       return res.status(404).send();
     }

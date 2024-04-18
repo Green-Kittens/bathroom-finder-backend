@@ -1,21 +1,22 @@
+// bathroom.controller.ts
 import { Request, Response } from "express";
-import Facility from "../models/facility.model.js"; // Importing the Facility model
+import { BathroomService } from "../services/facility.service.js";
 
-// Retrieve a list of all bathrooms
+const bathroomService = new BathroomService();
+
 export const getAllBathrooms = async (req: Request, res: Response) => {
   try {
-    const facilities = await Facility.find({});
+    const facilities = await bathroomService.getAllBathrooms();
     res.json(facilities);
   } catch (err) {
     res.status(500).send("Server error");
   }
 };
 
-// Retrieve information on a specific bathroom
 export const getBathroomById = async (req: Request, res: Response) => {
   const { bathroomId } = req.params;
   try {
-    const facility = await Facility.findById(bathroomId);
+    const facility = await bathroomService.getBathroomById(bathroomId);
     if (!facility) return res.status(404).send("Bathroom not found");
     res.json(facility);
   } catch (err) {
@@ -23,22 +24,19 @@ export const getBathroomById = async (req: Request, res: Response) => {
   }
 };
 
-// Create a new bathroom
 export const createBathroom = async (req: Request, res: Response) => {
   try {
-    const newFacility = new Facility(req.body);
-    const savedFacility = await newFacility.save();
+    const savedFacility = await bathroomService.createBathroom(req.body);
     res.status(201).json(savedFacility);
   } catch (err) {
     res.status(400).send("Bad Request");
   }
 };
 
-// Retrieve all tags currently applied to the bathroom
 export const getBathroomTags = async (req: Request, res: Response) => {
   const { bathroomId } = req.params;
   try {
-    const facility = await Facility.findById(bathroomId).select("Tags -_id");
+    const facility = await bathroomService.getBathroomTags(bathroomId);
     if (!facility) {
       return res.status(404).send("Facility not found");
     }
@@ -48,22 +46,15 @@ export const getBathroomTags = async (req: Request, res: Response) => {
   }
 };
 
-// Update the list of tags for a bathroom
 export const updateBathroomTags = async (req: Request, res: Response) => {
   const { bathroomId } = req.params;
   const { tags } = req.body;
 
   try {
-    const facility = await Facility.findByIdAndUpdate(
-      bathroomId,
-      { $set: { Tags: tags } },
-      { new: true, runValidators: true },
-    );
-
+    const facility = await bathroomService.updateBathroomTags(bathroomId, tags);
     if (!facility) {
       return res.status(404).send("Facility not found");
     }
-
     res.json(facility.Tags);
   } catch (err) {
     res.status(500).send("Server error");

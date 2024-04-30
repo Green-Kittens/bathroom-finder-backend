@@ -1,6 +1,3 @@
-// Define basic string types for tokens
-export type AccessToken = string;
-export type RefreshToken = string;
 
 // Example user type, adjust according to your actual user object
 export interface User {

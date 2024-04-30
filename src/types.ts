@@ -1,4 +1,3 @@
-
 // Example user type, adjust according to your actual user object
 export interface User {
   id: string;

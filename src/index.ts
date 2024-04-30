@@ -5,7 +5,6 @@ import userRoutes from "./routes/user.routes.js"; // Adjust path as necessary
 import facilityRoutes from "./routes/facility.routes.js"; // Adjust path as necessary
 import reviewRoutes from "./routes/review.routes.js"; // Adjust path as necessary
 
-
 // Express app setup
 const app = express();
 app.use(express.json());

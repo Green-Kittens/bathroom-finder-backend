@@ -4,12 +4,10 @@ import { connectDatabase } from "./database.js";
 import userRoutes from "./routes/user.routes.js"; // Adjust path as necessary
 import facilityRoutes from "./routes/facility.routes.js"; // Adjust path as necessary
 import reviewRoutes from "./routes/review.routes.js"; // Adjust path as necessary
-import cookieParser from "cookie-parser";
 
 // Express app setup
 const app = express();
 app.use(express.json());
-app.use(cookieParser());
 connectDatabase();
 
 // Use the routes with their base paths

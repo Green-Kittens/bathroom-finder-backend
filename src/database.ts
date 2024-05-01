@@ -6,7 +6,10 @@ export const connectDatabase = async () => {
     await mongoose.connect(config.databaseUrl);
     console.log("Connected to MongoDB Atlas");
   } catch (err) {
-    console.error("Could not connect to MongoDB Atlas:", err);
+    console.error(
+      "Could not connect to MongoDB Atlas at " + config.databaseUrl + " :",
+      err,
+    );
     process.exit(1);
   }
 };

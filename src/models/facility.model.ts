@@ -12,7 +12,7 @@ interface IFacility extends Document {
   Operations: string;
   Reviews: mongoose.Schema.Types.ObjectId[];
   Date: Date;
-  PictureURL: string;
+  PictureURL: string[];
   RatingAVG: number;
   Favorites: number;
   Reports: number;
@@ -32,7 +32,7 @@ const FacilitySchema: Schema = new Schema({
   PictureURL: { type: String, required: false },
   RatingAVG: { type: Number, required: true },
   Favorites: { type: Number, required: true },
-  Reports: { type: Number, required: true },
+  Reports: { type: Number, required: false },
 });
 
 FacilitySchema.index({ Location: "2dsphere" });

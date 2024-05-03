@@ -5,7 +5,7 @@ interface IUser extends Document {
   Favorites: mongoose.Schema.Types.ObjectId[];
   Reviews: mongoose.Schema.Types.ObjectId[];
   DateJoined: Date;
-  pfpURL: string;
+  PictureURL: string;
   DisplayName: string;
 }
 
@@ -14,7 +14,7 @@ const UserSchema: Schema = new Schema({
   Favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: "Facility" }],
   Reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
   DateJoined: { type: Date, required: true },
-  pfpURL: { type: String, required: true },
+  PictureURL: { type: String, required: false },
   DisplayName: { type: String, required: true },
 });
 

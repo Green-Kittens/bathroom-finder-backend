@@ -20,7 +20,10 @@ describe("Review Model Test", () => {
       Rating: 4.5,
       Likes: 50,
       Dislikes: 10,
-      PictureURL: "https://example.com/pic.jpg",
+      PictureURL: [
+        "https://example.com/pic.jpg",
+        "https://example.com/pic2.jpg",
+      ],
       FacilityID: new mongoose.Types.ObjectId(),
       UserId: new mongoose.Types.ObjectId(),
       Date: new Date(),

@@ -24,11 +24,15 @@ describe("Facility Model Test", () => {
       Operations: "9am-5pm",
       Reviews: [], // Assuming reviews would be added in real scenarios
       Date: new Date(),
-      PictureURL: "https://example.com/facility.jpg",
+      PictureURL: [
+        "https://example.com/facility.jpg",
+        "https://example.com/facility2.jpg",
+      ],
       RatingAVG: 4.5,
       Favorites: 0,
       Reports: 0,
     };
+
     const validFacility = new Facility(facilityData);
     const savedFacility = await validFacility.save();
 

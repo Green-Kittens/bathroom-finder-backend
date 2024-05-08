@@ -19,7 +19,7 @@ describe("User Model Test", () => {
     const userData = {
       email: "test@test.com",
       password: "123456",
-      pfpURL: "https://example.com/profilepic.jpg",
+      PictureURL: "https://example.com/profilepic.jpg",
       DateJoined: new Date(),
       DisplayName: "Test User",
     };
@@ -28,7 +28,7 @@ describe("User Model Test", () => {
 
     expect(savedUser._id).toBeDefined();
     expect(savedUser.email).toBe(userData.email);
-    expect(savedUser.PictureURL).toBe(userData.pfpURL);
+    expect(savedUser.PictureURL).toBe(userData.PictureURL);
     expect(savedUser.DateJoined).toBeDefined();
   });
 

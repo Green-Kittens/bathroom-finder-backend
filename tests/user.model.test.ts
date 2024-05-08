@@ -28,7 +28,7 @@ describe("User Model Test", () => {
 
     expect(savedUser._id).toBeDefined();
     expect(savedUser.email).toBe(userData.email);
-    expect(savedUser.pfpURL).toBe(userData.pfpURL);
+    expect(savedUser.PictureURL).toBe(userData.pfpURL);
     expect(savedUser.DateJoined).toBeDefined();
   });
 

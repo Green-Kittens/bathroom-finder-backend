@@ -16,7 +16,7 @@ const ReviewSchema: Schema = new Schema({
   Rating: { type: Number, required: true },
   Likes: { type: Number, required: true },
   Dislikes: { type: Number, required: true },
-  PictureURL: { type: String, required: false },
+  PictureURL: { type: [String], required: false },
   FacilityID: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Facility",

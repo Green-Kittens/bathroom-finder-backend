@@ -29,7 +29,7 @@ const FacilitySchema: Schema = new Schema({
   Operations: { type: String, required: true },
   Reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
   Date: { type: Date, required: true },
-  PictureURL: { type: String, required: false },
+  PictureURL: { type: [String], required: false },
   RatingAVG: { type: Number, required: true },
   Favorites: { type: Number, required: true },
   Reports: { type: Number, required: false },

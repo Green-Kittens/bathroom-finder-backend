@@ -109,5 +109,6 @@
     "moduleResolution": "NodeNext",
     "skipLibCheck": true
   },
-  "exclude": ["node_modules", "./*.ts", "__test__", "tests"]
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "__test__", "tests"]
 }

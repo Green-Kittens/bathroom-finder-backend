@@ -27,7 +27,7 @@ describe("User Model Test", () => {
     const savedUser = await validUser.save();
 
     expect(savedUser._id).toBeDefined();
-    expect(savedUser.email).toBe(userData.email);
+    expect(savedUser.Email).toBe(userData.email);
     expect(savedUser.PictureURL).toBe(userData.PictureURL);
     expect(savedUser.DateJoined).toBeDefined();
   });

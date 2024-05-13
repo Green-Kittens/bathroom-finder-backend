@@ -18,17 +18,21 @@ describe("Facility Model Test", () => {
   it("create & save facility successfully", async () => {
     const facilityData = {
       Name: "Facility One",
-      Location: { type: "Point", coordinates: [-73.97, 40.77] },
       Category: "General",
       Tags: "Clean, Spacious",
       Operations: "9am-5pm",
       Reviews: [], // Assuming reviews would be added in real scenarios
       Date: new Date(),
-      PictureURL: "https://example.com/facility.jpg",
+      PictureURL: [
+        "https://example.com/facility.jpg",
+        "https://example.com/facility2.jpg",
+      ],
       RatingAVG: 4.5,
       Favorites: 0,
       Reports: 0,
+      coordinates: [1.2345, 6.789],
     };
+
     const validFacility = new Facility(facilityData);
     const savedFacility = await validFacility.save();
 

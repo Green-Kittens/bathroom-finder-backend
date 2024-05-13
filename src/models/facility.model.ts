@@ -26,7 +26,7 @@ const FacilitySchema: Schema = new Schema({
   RatingAVG: { type: Number, required: true },
   Favorites: { type: Number, required: false },
   Reports: { type: Number, required: false },
-  coordinates: { type: [Number], required: true },
+  Coordinates: { type: [Number], required: true },
 });
 
 export default mongoose.model<IFacility>(

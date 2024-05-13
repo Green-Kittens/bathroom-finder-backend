@@ -7,7 +7,7 @@ interface IReview extends Document {
   Dislikes: number;
   PictureURL: string[];
   FacilityID: mongoose.Schema.Types.ObjectId;
-  UserId: mongoose.Schema.Types.ObjectId;
+  UserID: mongoose.Schema.Types.ObjectId;
   Date: Date;
   Description: string;
 }

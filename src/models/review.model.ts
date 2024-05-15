@@ -2,6 +2,7 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 interface IReview extends Document {
+  ReviewID: mongoose.Schema.Types.ObjectId;
   Rating: number;
   Likes: number;
   Dislikes: number;
@@ -13,6 +14,7 @@ interface IReview extends Document {
 }
 
 const ReviewSchema: Schema = new Schema({
+  ReviewID: { type: mongoose.Schema.Types.ObjectId, required: true },
   Rating: { type: Number, required: true },
   Likes: { type: Number, required: true },
   Dislikes: { type: Number, required: true },

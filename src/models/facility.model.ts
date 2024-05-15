@@ -2,6 +2,7 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 interface IFacility extends Document {
+  FacilityID: string;
   Name: string;
   Category: string;
   Tags: string;
@@ -12,10 +13,11 @@ interface IFacility extends Document {
   RatingAVG: number;
   Favorites: number;
   Reports: number;
-  coordinates: number[];
+  Coordinates: number[];
 }
 
 const FacilitySchema: Schema = new Schema({
+  FacilityID: { type: mongoose.Schema.Types.ObjectId, required: true },
   Name: { type: String, required: true },
   Category: { type: String, required: true },
   Tags: [{ type: String, required: false }],

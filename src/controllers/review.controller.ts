@@ -38,10 +38,14 @@ export const getReviewById = async (req: Request, res: Response) => {
 // Update a review
 export const updateReview = async (req: Request, res: Response) => {
   try {
-    const review = await Review.findByIdAndUpdate(req.params.ReviewID, req.body, {
-      new: true,
-      runValidators: true,
-    });
+    const review = await Review.findByIdAndUpdate(
+      req.params.ReviewID,
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      },
+    );
     if (!review) {
       return res.status(404).send();
     }

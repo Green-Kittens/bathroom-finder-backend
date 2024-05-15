@@ -39,7 +39,7 @@ export const getReviewById = async (req: Request, res: Response) => {
 export const updateReview = async (req: Request, res: Response) => {
   try {
     const review = await Review.findByIdAndUpdate(
-      req.params.ReviewID,
+      req.params.id,
       req.body,
       {
         new: true,
@@ -58,7 +58,7 @@ export const updateReview = async (req: Request, res: Response) => {
 // Delete a review
 export const deleteReview = async (req: Request, res: Response) => {
   try {
-    const review = await Review.findByIdAndDelete(req.params.ReviewID);
+    const review = await Review.findByIdAndDelete(req.params.id);
     if (!review) {
       return res.status(404).send();
     }

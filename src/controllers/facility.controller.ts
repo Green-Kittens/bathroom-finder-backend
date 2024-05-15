@@ -13,9 +13,9 @@ export const getAllBathrooms = async (req: Request, res: Response) => {
 
 // Retrieve information on a specific bathroom
 export const getBathroomById = async (req: Request, res: Response) => {
-  const { FacilityID } = req.params;
+  const { id } = req.params;
   try {
-    const facility = await Facility.findById(FacilityID);
+    const facility = await Facility.findById(id);
     if (!facility) return res.status(404).send("Bathroom not found");
     res.json(facility);
   } catch (err) {
@@ -36,9 +36,9 @@ export const createBathroom = async (req: Request, res: Response) => {
 
 // Retrieve all tags currently applied to the bathroom
 export const getBathroomTags = async (req: Request, res: Response) => {
-  const { FacilityID } = req.params;
+  const { id } = req.params;
   try {
-    const facility = await Facility.findById(FacilityID).select("Tags -_id");
+    const facility = await Facility.findById(id).select("Tags -_id");
     if (!facility) {
       return res.status(404).send("Facility not found");
     }
@@ -50,12 +50,12 @@ export const getBathroomTags = async (req: Request, res: Response) => {
 
 // Update the list of tags for a bathroom
 export const updateBathroomTags = async (req: Request, res: Response) => {
-  const { FacilityID } = req.params;
+  const { id } = req.params;
   const { tags } = req.body;
 
   try {
     const facility = await Facility.findByIdAndUpdate(
-      FacilityID,
+      id,
       { $set: { Tags: tags } },
       { new: true, runValidators: true },
     );

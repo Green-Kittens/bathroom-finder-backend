@@ -12,7 +12,7 @@ interface IFacility extends Document {
   RatingAVG: number;
   Favorites: number;
   Reports: number;
-  coordinates: number[];
+  Coordinates: number[];
 }
 
 const FacilitySchema: Schema = new Schema({

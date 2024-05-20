@@ -17,9 +17,8 @@ describe("User Model Test", () => {
 
   it("create & save user successfully", async () => {
     const userData = {
-      email: "test@test.com",
-      password: "123456",
-      pfpURL: "https://example.com/profilepic.jpg",
+      Email: "test@test.com",
+      PictureURL: "https://example.com/profilepic.jpg",
       DateJoined: new Date(),
       DisplayName: "Test User",
     };
@@ -27,8 +26,8 @@ describe("User Model Test", () => {
     const savedUser = await validUser.save();
 
     expect(savedUser._id).toBeDefined();
-    expect(savedUser.email).toBe(userData.email);
-    expect(savedUser.pfpURL).toBe(userData.pfpURL);
+    expect(savedUser.Email).toBe(userData.Email);
+    expect(savedUser.PictureURL).toBe(userData.PictureURL);
     expect(savedUser.DateJoined).toBeDefined();
   });
 

@@ -12,12 +12,12 @@ import {
 router.get("/", getAllBathrooms);
 
 // Retrieve information on a specific bathroom
-router.get("/:bathroomId", getBathroomById);
+router.get("/:id", getBathroomById);
 
 // Create a new bathroom
 router.post("/", createBathroom); //withAuth,
 
 // Retrieve all tags currently applied to the bathroom
-router.get("/:bathroomId/tags", getBathroomTags);
+router.get("/:id/tags", getBathroomTags);
 
 export default router;

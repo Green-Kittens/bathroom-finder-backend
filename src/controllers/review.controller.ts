@@ -25,7 +25,7 @@ export const getAllReviews = async (_: Request, res: Response) => {
 // Get a review by ID
 export const getReviewById = async (req: Request, res: Response) => {
   try {
-    const review = await Review.findById(req.params.id);
+    const review = await Review.findById(req.params.ReviewID);
     if (!review) {
       return res.status(404).send();
     }

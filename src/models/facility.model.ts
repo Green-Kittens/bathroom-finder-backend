@@ -28,6 +28,7 @@ const FacilitySchema: Schema = new Schema({
   Favorites: { type: Number, required: false },
   Reports: { type: Number, required: false },
   Coordinates: { type: [Number], required: true },
+  Description: {type: String, required: true},
 });
 
 export default mongoose.model<IFacility>(

@@ -22,7 +22,7 @@ const ReviewSchema: Schema = new Schema({
     ref: "Facility",
     required: true,
   },
-  UserID: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+  UserID: { type: String, ref: "User", required: true },
   Date: { type: Date, required: true },
   Description: { type: String, required: true },
 });

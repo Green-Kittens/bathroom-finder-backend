@@ -31,6 +31,7 @@ describe("Facility Model Test", () => {
       Favorites: 0,
       Reports: 0,
       coordinates: [1.2345, 6.789],
+      descrption: "Good bathroom overall.!",
     };
 
     const validFacility = new Facility(facilityData);

@@ -4,7 +4,7 @@ import mongoose, { Schema, Document } from "mongoose";
 interface IFacility extends Document {
   Name: string;
   Category: string;
-  Tags: string;
+  Tags: string[];
   Operations: string;
   Reviews: mongoose.Schema.Types.ObjectId[];
   Date: Date;

@@ -14,7 +14,12 @@ connectDatabase();
 
 // Set up multer for file uploads
 const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 8000000,
+  },
+});
 
 // Use the routes with their base paths
 app.use("/users", userRoutes);

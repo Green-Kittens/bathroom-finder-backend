@@ -13,6 +13,8 @@ interface IFacility extends Document {
   Favorites: number;
   Reports: number;
   Coordinates: number[];
+  Description: string;
+  UserID: string;
 }
 
 const FacilitySchema: Schema = new Schema({
@@ -27,6 +29,8 @@ const FacilitySchema: Schema = new Schema({
   Favorites: { type: Number, required: false },
   Reports: { type: Number, required: false },
   Coordinates: { type: [Number], required: true },
+  Description: { type: String, required: true },
+  UserID: [{ type: String, required: true, ref: "User" }],
 });
 
 export default mongoose.model<IFacility>(

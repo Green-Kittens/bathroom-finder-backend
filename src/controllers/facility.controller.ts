@@ -30,7 +30,7 @@ export const createBathroom = async (req: Request, res: Response) => {
     const savedFacility = await newFacility.save();
     res.status(201).json(savedFacility);
   } catch (err) {
-    res.status(400).send("Bad Request");
+    res.status(400).send(err);
   }
 };
 

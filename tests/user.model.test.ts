@@ -21,6 +21,7 @@ describe("User Model Test", () => {
       PictureURL: "https://example.com/profilepic.jpg",
       DateJoined: new Date(),
       DisplayName: "Test User",
+      UserID: "12345",
     };
     const validUser = new User(userData);
     const savedUser = await validUser.save();

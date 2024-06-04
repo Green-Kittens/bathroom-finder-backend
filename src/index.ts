@@ -15,6 +15,10 @@ app.use("/users", userRoutes);
 app.use("/reviews", reviewRoutes);
 app.use("/facilities", facilityRoutes);
 
-app.listen(config.port, () => {
-  console.log(`Server running on port ${config.port}`);
-});
+if (process.env.NODE_ENV !== "test") {
+  app.listen(config.port, () => {
+    console.log(`Server running on port ${config.port}`);
+  });
+}
+
+export default app;

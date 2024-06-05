@@ -22,10 +22,10 @@ export const getAllUsers = async (req: Request, res: Response) => {
   }
 };
 
-// Get a single user by id
+// Get a single user by UserID
 export const getUserById = async (req: Request, res: Response) => {
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findOne({ UserID: req.params.id });
     if (!user) {
       return res.status(404).send();
     }
@@ -35,13 +35,17 @@ export const getUserById = async (req: Request, res: Response) => {
   }
 };
 
-// Update a user
+// Update a user by UserID
 export const updateUser = async (req: Request, res: Response) => {
   try {
-    const user = await User.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
+    const user = await User.findOneAndUpdate(
+      { UserID: req.params.id },
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      },
+    );
     if (!user) {
       return res.status(404).send();
     }
@@ -51,10 +55,10 @@ export const updateUser = async (req: Request, res: Response) => {
   }
 };
 
-// Delete a user
+// Delete a user by UserID
 export const deleteUser = async (req: Request, res: Response) => {
   try {
-    const user = await User.findByIdAndDelete(req.params.id);
+    const user = await User.findOneAndDelete({ UserID: req.params.id });
     if (!user) {
       return res.status(404).send();
     }

@@ -12,12 +12,12 @@ import {
 router.post("/", createUser); //withAuth,
 
 // Route to get a single user by id
-router.get("/:id", getUserById);
+router.get("/:UserID", getUserById);
 
 // Route to update a user
-router.put("/:id", updateUser); //withAuth,
+router.put("/:UserID", updateUser); //withAuth,
 
 // Route to delete a user
-router.delete("/:id", deleteUser); //withAuth,
+router.delete("/:UserID", deleteUser); //withAuth,
 
 export default router;

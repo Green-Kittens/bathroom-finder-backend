@@ -4,16 +4,28 @@ import { connectDatabase } from "./database.js";
 import userRoutes from "./routes/user.routes.js"; // Adjust path as necessary
 import facilityRoutes from "./routes/facility.routes.js"; // Adjust path as necessary
 import reviewRoutes from "./routes/review.routes.js"; // Adjust path as necessary
+import imagesRoutes from "./routes/images.routes.js";
+import multer from "multer";
 
 // Express app setup
 const app = express();
 app.use(express.json());
 connectDatabase();
 
+// Set up multer for file uploads
+const storage = multer.memoryStorage();
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 8000000,
+  },
+});
+
 // Use the routes with their base paths
 app.use("/users", userRoutes);
 app.use("/reviews", reviewRoutes);
 app.use("/facilities", facilityRoutes);
+app.use("/images", imagesRoutes(upload));
 
 if (process.env.NODE_ENV !== "test") {
   app.listen(config.port, () => {

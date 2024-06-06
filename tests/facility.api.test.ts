@@ -18,9 +18,9 @@ afterAll(async () => {
 describe("Facility API Endpoints", () => {
   it("should create a new facility", async () => {
     const res = await request(app)
-      .post("/api/facilities")
+      .post("/facilities")
       .send({
-        Name: "Facility One",
+        Name: "Facility Test",
         Category: "General",
         Tags: "Clean, Spacious",
         Operations: "9am-5pm",
@@ -44,7 +44,7 @@ describe("Facility API Endpoints", () => {
 
   it("should fetch a facility by ID", async () => {
     const res = await request(app)
-      .get("/api/facilities/1") // Replace with a valid ID
+      .get("/facilities/65e3c7599aa3eada64c4c737") // Replace with a valid ID
       .send();
     expect(res.statusCode).toEqual(200);
     expect(res.body).toHaveProperty("id");

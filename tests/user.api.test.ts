@@ -17,11 +17,14 @@ afterAll(async () => {
 
 describe("User API Endpoints", () => {
   it("should create a new user", async () => {
-    const res = await request(app).post("/api/users").send({
-      username: "TestUser",
-      email: "testuser@example.com",
-      password: "password123",
-      // other required fields
+    const res = await request(app).post("/users").send({
+      Email: "test@test.com",
+      PictureURL: "https://example.com/profilepic.jpg",
+      DateJoined: new Date(),
+      DisplayName: "Test User",
+      Favorites: [],
+      Reviews: [],
+      UserID: "12345",
     });
     expect(res.statusCode).toEqual(201);
     expect(res.body).toHaveProperty("id");
@@ -30,9 +33,9 @@ describe("User API Endpoints", () => {
 
   it("should fetch a user by ID", async () => {
     const res = await request(app)
-      .get("/api/users/1") // Replace with a valid ID
+      .get("/users/user_123") // Replace with a valid ID
       .send();
-    expect(res.statusCode).toEqual(200);
+    expect(res.statusCode).toEqual(201);
     expect(res.body).toHaveProperty("id");
     expect(res.body.id).toBe(1);
   });

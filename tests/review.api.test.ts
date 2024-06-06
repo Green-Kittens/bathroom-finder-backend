@@ -17,13 +17,21 @@ afterAll(async () => {
 
 describe("Review API Endpoints", () => {
   it("should create a new review", async () => {
-    const res = await request(app).post("/api/reviews").send({
-      userId: 1,
-      facilityId: 1,
-      rating: 5,
-      comment: "Great facility!",
-      // other required fields
-    });
+    const res = await request(app)
+      .post("/reviews")
+      .send({
+        Rating: 4.5,
+        Likes: 50,
+        Dislikes: 10,
+        PictureURL: [
+          "https://example.com/pic.jpg",
+          "https://example.com/pic2.jpg",
+        ],
+        FacilityID: new mongoose.Types.ObjectId(),
+        UserID: new mongoose.Types.ObjectId(),
+        Date: new Date(),
+        Description: "Great place!",
+      });
     expect(res.statusCode).toEqual(201);
     expect(res.body).toHaveProperty("id");
     expect(res.body.comment).toBe("Great facility!");
@@ -31,7 +39,7 @@ describe("Review API Endpoints", () => {
 
   it("should fetch a review by ID", async () => {
     const res = await request(app)
-      .get("/api/reviews/1") // Replace with a valid ID
+      .get("/reviews/65e3cc149aa3eada64c4c739") // Replace with a valid ID
       .send();
     expect(res.statusCode).toEqual(200);
     expect(res.body).toHaveProperty("id");

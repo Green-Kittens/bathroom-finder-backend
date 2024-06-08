@@ -43,8 +43,6 @@ describe("Facility API Endpoints", () => {
 
     const res = await request(app).post("/facilities").send(facilityPayload);
 
-    console.log("Create Facility Response Body:", res.body); // Log response body for debugging
-
     createdFacilities.push(res.body._id);
     expect(res.statusCode).toEqual(201);
     expect(res.body).toHaveProperty("_id");
@@ -82,8 +80,6 @@ describe("Facility API Endpoints", () => {
     const res = await request(app)
       .get(`/facilities/${facilityID}`) // Fetch using the facility ID
       .send();
-
-    console.log("Fetch Facility Response Body:", res.body); // Log response body for debugging
 
     expect(res.statusCode).toEqual(200);
     expect(res.body).toHaveProperty("_id");
@@ -133,8 +129,6 @@ describe("Facility API Endpoints", () => {
     const res = await request(app)
       .put(`/facilities/${facilityID}/tags`)
       .send({ tags: ["Updated", "Tags"] });
-
-    console.log("Update Tags Response Body:", res.body); // Log response body for debugging
 
     expect(res.statusCode).toEqual(200);
     expect(Array.isArray(res.body)).toBe(true);

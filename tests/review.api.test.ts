@@ -35,8 +35,6 @@ describe("Review API Endpoints", () => {
 
     const res = await request(app).post("/reviews").send(reviewPayload);
 
-    console.log("Create Review Response Body:", res.body); // Log response body for debugging
-
     createdReviews.push(res.body._id); // Track created review
 
     expect(res.statusCode).toEqual(201);
@@ -63,8 +61,6 @@ describe("Review API Endpoints", () => {
 
     // Fetch the review by ID
     const res = await request(app).get(`/reviews/${createRes.body._id}`).send();
-
-    console.log("Fetch Review Response Body:", res.body); // Log response body for debugging
 
     expect(res.statusCode).toEqual(200);
     expect(res.body).toHaveProperty("_id");
@@ -96,8 +92,6 @@ describe("Review API Endpoints", () => {
       .put(`/reviews/${createRes.body._id}`)
       .send(updatePayload);
 
-    console.log("Update Review Response Body:", res.body); // Log response body for debugging
-
     expect(res.statusCode).toEqual(200);
     expect(res.body.Description).toBe("Updated description");
     expect(res.body.Rating).toBe(5);
@@ -118,8 +112,6 @@ describe("Review API Endpoints", () => {
       });
 
     const res = await request(app).delete(`/reviews/${createRes.body._id}`);
-
-    console.log("Delete Review Response Body:", res.body); // Log response body for debugging
 
     expect(res.statusCode).toEqual(200);
     expect(res.body).toHaveProperty("_id");
@@ -145,8 +137,6 @@ describe("Review API Endpoints", () => {
 
     const res = await request(app).post("/reviews").send(invalidPayload);
 
-    console.log("Invalid Input Response Body:", res.body); // Log response body for debugging
-
     expect(res.statusCode).toEqual(400);
     expect(res.body).toHaveProperty("errors");
   });
@@ -162,8 +152,6 @@ describe("Review API Endpoints", () => {
       .put("/reviews/606d1f3e6a08e1201c7df64b") // Use a non-existent ID
       .send(updatePayload);
 
-    console.log("Update Non-existent Review Response Body:", res.body); // Log response body for debugging
-
     expect(res.statusCode).toEqual(404);
   });
 
@@ -171,16 +159,12 @@ describe("Review API Endpoints", () => {
   it("should return 404 for non-existent review when deleting", async () => {
     const res = await request(app).delete("/reviews/606d1f3e6a08e1201c7df64b"); // Use a non-existent ID
 
-    console.log("Delete Non-existent Review Response Body:", res.body); // Log response body for debugging
-
     expect(res.statusCode).toEqual(404);
   });
 
   // Error scenario: fetch non-existent review
   it("should return 404 for non-existent review when fetching by ID", async () => {
     const res = await request(app).get("/reviews/606d1f3e6a08e1201c7df64b"); // Use a non-existent ID
-
-    console.log("Fetch Non-existent Review Response Body:", res.body); // Log response body for debugging
 
     expect(res.statusCode).toEqual(404);
   });

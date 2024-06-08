@@ -34,8 +34,6 @@ describe("User API Endpoints", () => {
 
     const res = await request(app).post("/users").send(userPayload);
 
-    console.log("Create User Response Body:", res.body); // Log response body for debugging
-
     createdUsers.push(res.body.UserID); // Track created user
 
     expect(res.statusCode).toEqual(201);
@@ -62,8 +60,6 @@ describe("User API Endpoints", () => {
       .get("/users/54321") // Fetch using the UserID
       .send();
 
-    console.log("Fetch User Response Body:", res.body); // Log response body for debugging
-
     expect(res.statusCode).toEqual(200); // Expect 200 OK
     expect(res.body).toHaveProperty("_id");
     expect(res.body.UserID).toBe("54321");
@@ -89,8 +85,6 @@ describe("User API Endpoints", () => {
 
     const res = await request(app).put("/users/67890").send(updatePayload);
 
-    console.log("Update User Response Body:", res.body); // Log response body for debugging
-
     expect(res.statusCode).toEqual(200);
     expect(res.body.Email).toBe("updateduser@test.com");
     expect(res.body.DisplayName).toBe("Updated User");
@@ -108,8 +102,6 @@ describe("User API Endpoints", () => {
     });
 
     const res = await request(app).delete("/users/09876");
-
-    console.log("Delete User Response Body:", res.body); // Log response body for debugging
 
     expect(res.statusCode).toEqual(200);
     expect(res.body).toHaveProperty("_id");
@@ -139,8 +131,6 @@ describe("User API Endpoints", () => {
     // Attempt to create a second user with the same email
     const secondRes = await request(app).post("/users").send(userPayload);
 
-    console.log("Duplicate User Response Body:", secondRes.body); // Log response body for debugging
-
     expect(secondRes.statusCode).toEqual(400);
     expect(secondRes.body).toHaveProperty("errors");
   });
@@ -159,8 +149,6 @@ describe("User API Endpoints", () => {
 
     const res = await request(app).post("/users").send(invalidPayload);
 
-    console.log("Invalid Input Response Body:", res.body); // Log response body for debugging
-
     expect(res.statusCode).toEqual(400);
     expect(res.body).toHaveProperty("errors");
   });
@@ -177,23 +165,17 @@ describe("User API Endpoints", () => {
       .put("/users/nonexistent")
       .send(updatePayload);
 
-    console.log("Update Non-existent User Response Body:", res.body); // Log response body for debugging
-
     expect(res.statusCode).toEqual(404);
   });
 
   it("should return 404 for non-existent user when deleting", async () => {
     const res = await request(app).delete("/users/nonexistent");
 
-    console.log("Delete Non-existent User Response Body:", res.body); // Log response body for debugging
-
     expect(res.statusCode).toEqual(404);
   });
 
   it("should return 404 for non-existent user when fetching by UserID", async () => {
     const res = await request(app).get("/users/nonexistent");
-
-    console.log("Fetch Non-existent User Response Body:", res.body); // Log response body for debugging
 
     expect(res.statusCode).toEqual(404);
   });

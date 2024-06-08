@@ -19,7 +19,7 @@ describe("Facility Model Test", () => {
     const facilityData = {
       Name: "Facility One",
       Category: "General",
-      Tags: "Clean, Spacious",
+      Tags: ["Wheelchair accessible", "Baby changing"],
       Operations: "9am-5pm",
       Reviews: [], // Assuming reviews would be added in real scenarios
       Date: new Date(),

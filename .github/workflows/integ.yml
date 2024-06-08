@@ -1,0 +1,38 @@
+name: API Integration Test
+
+on:
+  workflow_run:
+    workflows:
+      ["Build and deploy Node.js app to Azure Web App - bathroom-finder"]
+    types:
+      - completed
+
+jobs:
+  api_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: GET all bathrooms
+        run: |
+          # Define the API endpoint
+          API_ENDPOINT="https://bathroom-finder.azurewebsites.net/facilities"
+
+          # Use curl to fetch the API endpoint
+          curl -X GET "$API_ENDPOINT" -H "Accept: application/json" -o response.json
+
+          # Print the response
+          cat response.json
+
+      - name: POST a new bathroom
+        run: |
+          # Define the API endpoint for POST request
+          API_ENDPOINT="https://bathroom-finder.azurewebsites.net/facilities"
+
+          # Define the JSON data to be sent in the POST request
+          JSON_DATA='{ "Name": "name", "Coordinates": [ 0, 0 ], "Category": "category", "Tags": "", "Operations": "hello", "Date": "2012-04-23T18:25:43.511Z", "PictureURL": [], "RatingAVG": 0, "Favorites": 0, "Reports": "", "Description": "hello" }'
+
+          # Use curl to send the POST request
+          curl -X POST "$API_ENDPOINT" -H "Content-Type: application/json" -d "$JSON_DATA" -o post_response.json
+
+          # Print the response
+          cat post_response.json

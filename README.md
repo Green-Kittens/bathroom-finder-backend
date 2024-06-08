@@ -1,3 +1,13 @@
+## Continuous Integration Status
+
+[![Compile](https://github.com/Green-Kittens/bathroom-finder-backend/actions/workflows/compile.yml/badge.svg)](https://github.com/Green-Kittens/bathroom-finder-backend/actions/workflows/compile.yml)
+
+[![Format](https://github.com/Green-Kittens/bathroom-finder-backend/actions/workflows/format.yml/badge.svg)](https://github.com/Green-Kittens/bathroom-finder-backend/actions/workflows/format.yml)
+
+[![Lint](https://github.com/Green-Kittens/bathroom-finder-backend/actions/workflows/lint.yml/badge.svg)](https://github.com/Green-Kittens/bathroom-finder-backend/actions/workflows/lint.yml)
+
+[![Test](https://github.com/Green-Kittens/bathroom-finder-backend/actions/workflows/test.yml/badge.svg)](https://github.com/Green-Kittens/bathroom-finder-backend/actions/workflows/test.yml)
+
 ## Coverage Report
 
 2024-06-07 (still in PR)

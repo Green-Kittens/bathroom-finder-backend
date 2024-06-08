@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import { Server } from "http";
 
 let server: Server;
-let createdFacilities: string[] = [];
+const createdFacilities: string[] = [];
 
 beforeAll(async () => {
   await connectDatabase();

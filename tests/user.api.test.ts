@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import { Server } from "http";
 
 let server: Server;
-let createdUsers: string[] = []; // Explicitly type the array
+const createdUsers: string[] = []; // Explicitly type the array
 
 beforeAll(async () => {
   await connectDatabase();

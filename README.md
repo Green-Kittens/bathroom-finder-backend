@@ -5,6 +5,12 @@
 [![Lint](https://github.com/Green-Kittens/bathroom-finder-backend/actions/workflows/lint.yml/badge.svg)](https://github.com/Green-Kittens/bathroom-finder-backend/actions/workflows/lint.yml)
 [![Test](https://github.com/Green-Kittens/bathroom-finder-backend/actions/workflows/test.yml/badge.svg)](https://github.com/Green-Kittens/bathroom-finder-backend/actions/workflows/test.yml)
 
+## Continuous Deployment
+
+[![Build and deploy Node.js app to Azure Web App - bathroom-finder](https://github.com/Green-Kittens/bathroom-finder-backend/actions/workflows/main_bathroom-finder.yml/badge.svg)](https://github.com/Green-Kittens/bathroom-finder-backend/actions/workflows/main_bathroom-finder.yml)
+
+https://bathroom-finder.azurewebsites.net/
+
 ## Coverage Report
 
 2024-06-07 (still in PR)

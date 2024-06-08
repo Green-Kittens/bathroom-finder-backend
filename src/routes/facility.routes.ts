@@ -6,7 +6,6 @@ import {
   getBathroomById,
   createBathroom,
   getBathroomTags,
-  updateBathroomTags,
 } from "../controllers/facility.controller.js";
 
 // Retrieve a list of all bathrooms
@@ -20,8 +19,5 @@ router.post("/", createBathroom); //withAuth,
 
 // Retrieve all tags currently applied to the bathroom
 router.get("/:id/tags", getBathroomTags);
-
-// Update the list of tags for a bathroom
-router.put("/:id/tags", updateBathroomTags);
 
 export default router;

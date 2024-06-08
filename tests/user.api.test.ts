@@ -6,7 +6,15 @@ import { Server } from "http";
 
 let server: Server;
 const createdUsers: string[] = []; // Explicitly type the array
-
+const userPayload = {
+  Email: "testuser1@test.com",
+  PictureURL: "https://example.com/profilepic.jpg",
+  DateJoined: new Date(),
+  DisplayName: "Test User",
+  Favorites: [],
+  Reviews: [],
+  UserID: "123456789",
+};
 beforeAll(async () => {
   await connectDatabase();
   server = app.listen(3000);
@@ -22,16 +30,6 @@ afterAll(async () => {
 
 describe("User API Endpoints", () => {
   it("should create a new user", async () => {
-    const userPayload = {
-      Email: "testuser1@test.com",
-      PictureURL: "https://example.com/profilepic.jpg",
-      DateJoined: new Date(),
-      DisplayName: "Test User",
-      Favorites: [],
-      Reviews: [],
-      UserID: "12345",
-    };
-
     const res = await request(app).post("/users").send(userPayload);
 
     createdUsers.push(res.body.UserID); // Track created user
@@ -44,25 +42,19 @@ describe("User API Endpoints", () => {
   it("should fetch a user by UserID", async () => {
     // Create a user via the API
     const createRes = await request(app).post("/users").send({
-      Email: "testuser2@test.com",
-      PictureURL: "https://example.com/profilepic.jpg",
-      DateJoined: new Date(),
-      DisplayName: "Test User",
-      Favorites: [],
-      Reviews: [],
-      UserID: "54321",
+      userPayload,
     });
 
     createdUsers.push(createRes.body.UserID); // Track created user
 
     // Fetch the user by UserID
     const res = await request(app)
-      .get("/users/54321") // Fetch using the UserID
+      .get("/users/123456789") // Fetch using the UserID
       .send();
 
     expect(res.statusCode).toEqual(200); // Expect 200 OK
     expect(res.body).toHaveProperty("_id");
-    expect(res.body.UserID).toBe("54321");
+    expect(res.body.UserID).toBe("123456789");
   });
 
   it("should update a user by UserID", async () => {
@@ -72,18 +64,12 @@ describe("User API Endpoints", () => {
     };
 
     const createRes = await request(app).post("/users").send({
-      Email: "testuser3@test.com",
-      PictureURL: "https://example.com/profilepic.jpg",
-      DateJoined: new Date(),
-      DisplayName: "Test User",
-      Favorites: [],
-      Reviews: [],
-      UserID: "67890",
+      userPayload,
     });
 
     createdUsers.push(createRes.body.UserID); // Track created user
 
-    const res = await request(app).put("/users/67890").send(updatePayload);
+    const res = await request(app).put("/users/123456789").send(updatePayload);
 
     expect(res.statusCode).toEqual(200);
     expect(res.body.Email).toBe("updateduser@test.com");
@@ -92,23 +78,17 @@ describe("User API Endpoints", () => {
 
   it("should delete a user by UserID", async () => {
     await request(app).post("/users").send({
-      Email: "testuser4@test.com",
-      PictureURL: "https://example.com/profilepic.jpg",
-      DateJoined: new Date(),
-      DisplayName: "Test User",
-      Favorites: [],
-      Reviews: [],
-      UserID: "09876",
+      userPayload,
     });
 
-    const res = await request(app).delete("/users/09876");
+    const res = await request(app).delete("/users/123456789");
 
     expect(res.statusCode).toEqual(200);
     expect(res.body).toHaveProperty("_id");
-    expect(res.body.UserID).toBe("09876");
+    expect(res.body.UserID).toBe("123456789");
 
     // Verify deletion
-    const fetchRes = await request(app).get("/users/09876");
+    const fetchRes = await request(app).get("/users/123456789");
     expect(fetchRes.statusCode).toEqual(404);
   });
 

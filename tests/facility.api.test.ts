@@ -6,6 +6,24 @@ import { Server } from "http";
 
 let server: Server;
 const createdFacilities: string[] = [];
+const facilityPayload = {
+  Name: "Test Facility",
+  Category: "General",
+  Tags: ["Clean", "Spacious"],
+  Operations: "9am-5pm",
+  Reviews: [],
+  Date: new Date(),
+  PictureURL: [
+    "https://example.com/facility.jpg",
+    "https://example.com/facility2.jpg",
+  ],
+  RatingAVG: 4.5,
+  Favorites: 0,
+  Reports: 0,
+  Coordinates: [],
+  Description: "Good bathroom overall!",
+  UserID: "12345",
+};
 
 beforeAll(async () => {
   await connectDatabase();
@@ -22,25 +40,6 @@ afterAll(async () => {
 
 describe("Facility API Endpoints", () => {
   it("should create a new facility", async () => {
-    const facilityPayload = {
-      Name: "Test Facility",
-      Category: "General",
-      Tags: ["Clean", "Spacious"],
-      Operations: "9am-5pm",
-      Reviews: [],
-      Date: new Date(),
-      PictureURL: [
-        "https://example.com/facility.jpg",
-        "https://example.com/facility2.jpg",
-      ],
-      RatingAVG: 4.5,
-      Favorites: 0,
-      Reports: 0,
-      Coordinates: [],
-      Description: "Good bathroom overall!",
-      UserID: "12345",
-    };
-
     const res = await request(app).post("/facilities").send(facilityPayload);
 
     createdFacilities.push(res.body._id);
@@ -53,24 +52,7 @@ describe("Facility API Endpoints", () => {
     // Create a facility via the API
     const createRes = await request(app)
       .post("/facilities")
-      .send({
-        Name: "Test Facility",
-        Category: "General",
-        Tags: ["Clean", "Spacious"],
-        Operations: "9am-5pm",
-        Reviews: [],
-        Date: new Date(),
-        PictureURL: [
-          "https://example.com/facility.jpg",
-          "https://example.com/facility2.jpg",
-        ],
-        RatingAVG: 4.5,
-        Favorites: 0,
-        Reports: 0,
-        Coordinates: [],
-        Description: "Good bathroom overall!",
-        UserID: "12345",
-      });
+      .send(facilityPayload);
 
     const facilityID = createRes.body._id;
 
@@ -102,24 +84,7 @@ describe("Facility API Endpoints", () => {
     // Create a facility via the API
     const createRes = await request(app)
       .post("/facilities")
-      .send({
-        Name: "Test Facility",
-        Category: "General",
-        Tags: ["Clean", "Spacious"],
-        Operations: "9am-5pm",
-        Reviews: [],
-        Date: new Date(),
-        PictureURL: [
-          "https://example.com/facility.jpg",
-          "https://example.com/facility2.jpg",
-        ],
-        RatingAVG: 4.5,
-        Favorites: 0,
-        Reports: 0,
-        Coordinates: [],
-        Description: "Good bathroom overall!",
-        UserID: "12345",
-      });
+      .send(facilityPayload);
 
     const facilityID = createRes.body._id;
 

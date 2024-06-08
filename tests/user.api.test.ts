@@ -97,7 +97,7 @@ describe("User API Endpoints", () => {
   });
 
   it("should delete a user by UserID", async () => {
-    const createRes = await request(app).post("/users").send({
+    await request(app).post("/users").send({
       Email: "testuser4@test.com",
       PictureURL: "https://example.com/profilepic.jpg",
       DateJoined: new Date(),

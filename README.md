@@ -38,7 +38,6 @@ https://bathroom-finder.azurewebsites.net/
 | images.routes.ts          | 100       | 100        | 100       | 100       |
 | review.routes.ts          | 100       | 100        | 100       | 100       |
 | user.routes.ts            | 100       | 100        | 100       | 100       |
-| ------------------------- | --------- | ---------- | --------- | --------- | ------------------------------- |
 
 Test Suites: 6 passed, 6 total
 Tests: 26 passed, 26 total

@@ -5,6 +5,7 @@ import userRoutes from "./routes/user.routes.js"; // Adjust path as necessary
 import facilityRoutes from "./routes/facility.routes.js"; // Adjust path as necessary
 import reviewRoutes from "./routes/review.routes.js"; // Adjust path as necessary
 import imagesRoutes from "./routes/images.routes.js";
+import errorHandler from "./middleware/error.handler.js";
 import multer from "multer";
 
 // Express app setup
@@ -27,6 +28,13 @@ app.use("/reviews", reviewRoutes);
 app.use("/facilities", facilityRoutes);
 app.use("/images", imagesRoutes(upload));
 
-app.listen(config.port, () => {
-  console.log(`Server running on port ${config.port}`);
-});
+// Apply the error handling middleware
+app.use(errorHandler);
+
+if (process.env.NODE_ENV !== "test") {
+  app.listen(config.port, () => {
+    console.log(`Server running on port ${config.port}`);
+  });
+}
+
+export default app;

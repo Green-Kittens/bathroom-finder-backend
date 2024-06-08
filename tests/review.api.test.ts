@@ -64,7 +64,9 @@ describe("Review API Endpoints", () => {
 
     createdReviews.push(createRes.body._id); // Track created review
 
-    const res = await request(app).put(`/reviews/${createRes.body._id}`).send(updatePayload);
+    const res = await request(app)
+      .put(`/reviews/${createRes.body._id}`)
+      .send(updatePayload);
 
     expect(res.statusCode).toEqual(200);
     expect(res.body.Description).toBe("Updated description");
@@ -111,7 +113,9 @@ describe("Review API Endpoints", () => {
       Rating: 3,
     };
 
-    const res = await request(app).put("/reviews/606d1f3e6a08e1201c7df64b").send(updatePayload);
+    const res = await request(app)
+      .put("/reviews/606d1f3e6a08e1201c7df64b")
+      .send(updatePayload);
 
     expect(res.statusCode).toEqual(404);
   });

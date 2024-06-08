@@ -10,5 +10,8 @@ const config: JestConfigWithTsJest = {
   },
   testEnvironment: "node",
   extensionsToTreatAsEsm: [".ts"],
+  globalSetup: "./tests/setupMemoryDatabase.ts",
+  globalTeardown: "./tests/teardownMemoryDatabase.ts",
+  setupFilesAfterEnv: ["./tests/setupAfterEnv.ts"],
 };
 export default config;
